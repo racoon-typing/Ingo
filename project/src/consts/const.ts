@@ -143,3 +143,22 @@ export const userUploadFiles = [
         converted: false,
     },
 ]
+
+
+export const fileCategories = [
+    {
+        id: 1,
+        name: 'Обработанные',
+        value: 'process',
+    },
+    {
+        id: 2,
+        name: 'Не обработанные',
+        value: 'not process',
+    },
+    {
+        id: 3,
+        name: 'В архиве',
+        value: 'archive',
+    },
+]

@@ -12,3 +12,9 @@ export interface IMenuItem {
     name: string;
     value: string;
 }
+
+export interface IFileCategory {
+    id: number;
+    name: string;
+    value: string;
+}
