@@ -1,6 +1,31 @@
 // import "./Layout.scss";
 
 import { UserRound } from "lucide-react";
+import Menu from "../components/menu/Menu";
+
+const menuList = [
+  {
+    id: 1,
+    name: "Конвертировать файлы",
+    value: "convert",
+  },
+  {
+    id: 2,
+    name: "Сохраненные файлы",
+    value: "files",
+  },
+  {
+    id: 3,
+    name: "Статистика",
+    value: "statistic",
+  },
+];
+
+export interface IMenuItem {
+  id: number;
+  name: string;
+  value: string;
+}
 
 function Layout({ children }): JSX.Element {
   return (
@@ -27,25 +52,7 @@ function Layout({ children }): JSX.Element {
             </small>
           </div>
 
-          <div className="menu__wrapper pt-24 flex flex-col justify-start grow">
-            <ul className="menu__list">
-              <li className="menu__item p-4 px-2 rounded-md bg-white text-black mb-2">
-                Конвертировать файлы
-              </li>
-              <li
-                className="menu__item p-4 px-2 rounded-md text-black mb-2"
-                style={{ backgroundColor: "rgba(255, 255, 255, 0.5)" }}
-              >
-                Сохраненные файлы
-              </li>
-              <li
-                className="menu__item p-4 px-2 rounded-md bg-white text-black mb-2"
-                style={{ backgroundColor: "rgba(255, 255, 255, 0.5)" }}
-              >
-                Статистика
-              </li>
-            </ul>
-          </div>
+          <Menu list={menuList} />
         </div>
 
         <div className="w-full py-8 pr-5">
