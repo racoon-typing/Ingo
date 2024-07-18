@@ -1,8 +1,8 @@
 // import './Menu.scss';
 
 import { useState } from "react";
-import { IMenuItem } from "../../layout/Layout";
 import MenuItem from "../menu-item/Menu-item";
+import { IMenuItem } from "../../types/types";
 
 interface IMenuProp {
   list: IMenuItem[];

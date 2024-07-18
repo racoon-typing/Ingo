@@ -1,13 +1,16 @@
-// import { useState } from 'react'
-import Main from "../pages/main/Main";
+// import Files from "../components/files/Files";
+// import ConverterPage from "../pages/converter-page/ConverterPage";
+import UploadFilesPage from "../pages/upload-files-page/UploadFilesPage";
 import "./App.css";
 
 function App() {
-  // const [count, setCount] = useState(0)
-
   return (
     <>
-      <Main />
+      {/* <ConverterPage /> */}
+
+      <UploadFilesPage />
+
+      {/* <Files /> */}
     </>
   );
 }
