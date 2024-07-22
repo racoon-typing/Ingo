@@ -4,7 +4,9 @@ import classNames from "classnames";
 import { IFileCategory } from "../../types/types";
 
 interface IFileCategoryItemProp {
-  category: IFileCategory[];
+  category: IFileCategory;
+  activeCategory: number;
+  changeCategoryHandler: (id: number) => void;
 }
 
 function FileCategoryItem({
@@ -16,7 +18,7 @@ function FileCategoryItem({
 
   return (
     <li
-      onClick={changeCategoryHandler(category.id)}
+      onClick={() => changeCategoryHandler(category.id)}
       key={category.id}
       className={classNames("p-2 px-3 rounded-md", {
         "bg-white shadow": isActive,

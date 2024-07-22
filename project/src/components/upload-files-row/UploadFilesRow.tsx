@@ -14,9 +14,6 @@ function UploadFilesRow({ file }: IUploadFilesRowProp): JSX.Element {
       <td className="px-3 py-2">{file.size}</td>
       <td className="px-3 py-2">{file.type}</td>
       <td className="px-3 py-2">{file.uploadTime}</td>
-      <td className="px-3 py-2">
-        <input type="checkbox" name="" id="" checked={file.converted} />
-      </td>
     </tr>
   );
 }

@@ -13,7 +13,6 @@ function UploadFilesTable(): JSX.Element {
           <th className="min-w-min px-3 py-2 text-left">Размер файла</th>
           <th className="min-w-min px-3 py-2 text-left">Тип файла</th>
           <th className="min-w-min px-3 py-2 text-left">Время загрузки</th>
-          <th className="min-w-min px-3 py-2 text-left">Обработан</th>
         </tr>
       </thead>
       <tbody>

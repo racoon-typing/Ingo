@@ -5,7 +5,7 @@ function CovertStatistic(): JSX.Element {
     <div className="p-3 px-5 overflow-hidden rounded-xl border border-zinc-200 shadow">
       <table className="table-auto h-full w-full min-w-full px-3">
         <thead>
-          <tr className="border-b-2 border-b-zinc-200 bg-zinc-200">
+          <tr className="border-b-2">
             <th className="text-left px-3 pr-4">Показатель</th>
             <th className="w-1/4 px-2 text-left">Значение</th>
           </tr>

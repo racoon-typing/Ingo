@@ -1,26 +1,25 @@
 // import "./Menu-item.scss";
 
 import classNames from "classnames";
-import { IMenuItem } from "../../layout/Layout";
+import { IMenuItem } from "../../types/types";
 
 interface IMenuItemProp {
-  activeId: number;
-  handleChangeActive: (id: number) => void;
+  active: string;
+  handleChangeActive: (id: string) => void;
   item: IMenuItem;
 }
 
 function MenuItem({
-  activeId,
+  active,
   handleChangeActive,
   item,
 }: IMenuItemProp): JSX.Element {
-  const { id, name } = item;
-
-  const isActive = activeId == id;
+  const { name, value } = item;
+  const isActive = active === value;
 
   return (
     <li
-      onClick={() => handleChangeActive(id)}
+      onClick={() => handleChangeActive(value)}
       className={classNames(
         "menu__item p-4 px-2 rounded-md text-black mb-2 duration-300",
         {

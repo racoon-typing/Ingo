@@ -1,24 +1,28 @@
 export const menuList = [
-    {
-        id: 1,
-        name: "Личный кабинет",
-        value: "account",
-    },
+    // {
+    //     id: 1,
+    //     name: "Личный кабинет",
+    //     value: "account",
+    //     link: '/account'
+    // },
     {
         id: 2,
         name: "Конвертировать файлы",
         value: "convert",
+        link: '/convert'
     },
     {
         id: 3,
         name: "Сохраненные файлы",
         value: "files",
+        link: '/files'
     },
-    {
-        id: 4,
-        name: "Статистика",
-        value: "statistic",
-    },
+    // {
+    //     id: 4,
+    //     name: "Статистика",
+    //     value: "statistic",
+    //     link: '/statistic'
+    // },
 ];
 
 export const userData = {
@@ -70,7 +74,7 @@ export const userUploadFiles = [
         converted: false,
     },
     {
-        name: 'Аудио 1',
+        name: 'Аудио 2',
         description: 'Тестовый аудио файл',
         size: '5 MB',
         type: 'MP3',
@@ -79,7 +83,7 @@ export const userUploadFiles = [
     },
     // kfd
     {
-        name: 'Аудио 1',
+        name: 'Аудио 3',
         description: 'Тестовый аудио файл',
         size: '5 MB',
         type: 'MP3',
@@ -87,7 +91,7 @@ export const userUploadFiles = [
         converted: false,
     },
     {
-        name: 'Аудио 1',
+        name: 'Аудио 4',
         description: 'Тестовый аудио файл',
         size: '5 MB',
         type: 'MP3',
@@ -95,7 +99,7 @@ export const userUploadFiles = [
         converted: false,
     },
     {
-        name: 'Аудио 1',
+        name: 'Аудио 5',
         description: 'Тестовый аудио файл',
         size: '5 MB',
         type: 'MP3',
@@ -103,7 +107,7 @@ export const userUploadFiles = [
         converted: false,
     },
     {
-        name: 'Аудио 1',
+        name: 'Аудио 6',
         description: 'Тестовый аудио файл',
         size: '5 MB',
         type: 'MP3',
@@ -111,7 +115,7 @@ export const userUploadFiles = [
         converted: false,
     },
     {
-        name: 'Аудио 1',
+        name: 'Аудио 7',
         description: 'Тестовый аудио файл',
         size: '5 MB',
         type: 'MP3',
@@ -119,7 +123,7 @@ export const userUploadFiles = [
         converted: false,
     },
     {
-        name: 'Аудио 1',
+        name: 'Аудио 8',
         description: 'Тестовый аудио файл',
         size: '5 MB',
         type: 'MP3',
@@ -127,7 +131,7 @@ export const userUploadFiles = [
         converted: false,
     },
     {
-        name: 'Аудио 1',
+        name: 'Аудио 99',
         description: 'Тестовый аудио файл',
         size: '5 MB',
         type: 'MP3',
@@ -135,7 +139,7 @@ export const userUploadFiles = [
         converted: false,
     },
     {
-        name: 'Аудио 1',
+        name: 'Аудио 19',
         description: 'Тестовый аудио файл',
         size: '5 MB',
         type: 'MP3',

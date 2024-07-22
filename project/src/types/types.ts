@@ -11,6 +11,7 @@ export interface IMenuItem {
     id: number;
     name: string;
     value: string;
+    link: string;
 }
 
 export interface IFileCategory {
