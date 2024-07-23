@@ -1,4 +1,5 @@
 export interface IUploadFiles {
+    path: string;
     name: string;
     description: string;
     size: string;

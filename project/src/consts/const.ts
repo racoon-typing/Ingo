@@ -1,10 +1,10 @@
 export const menuList = [
-    // {
-    //     id: 1,
-    //     name: "Личный кабинет",
-    //     value: "account",
-    //     link: '/account'
-    // },
+    {
+        id: 1,
+        name: "Личный кабинет",
+        value: "account",
+        link: '/account'
+    },
     {
         id: 2,
         name: "Конвертировать файлы",
@@ -17,12 +17,12 @@ export const menuList = [
         value: "files",
         link: '/files'
     },
-    // {
-    //     id: 4,
-    //     name: "Статистика",
-    //     value: "statistic",
-    //     link: '/statistic'
-    // },
+    {
+        id: 4,
+        name: "Статистика",
+        value: "statistic",
+        link: '/statistic'
+    },
 ];
 
 export const userData = {
@@ -33,6 +33,142 @@ export const userData = {
 }
 
 export const userUploadFiles = [
+    {
+        path: 'document-1.pdf',
+        name: 'Документ 1',
+        description: 'Первый тестовый документ',
+        size: '1.5 MB',
+        type: 'PDF',
+        uploadTime: '10:30 17/07/2024',
+    },
+    {
+        path: 'image-1.jpeg',
+        name: 'Изображение 1',
+        description: 'Тестовое изображение высокого качества',
+        size: '3.2 MB',
+        type: 'JPEG',
+        uploadTime: '11:15 17/07/2024',
+    },
+    {
+        path: 'video-1.mp4',
+        name: 'Видео 1',
+        description: 'Тестовое видео файл',
+        size: '20 MB',
+        type: 'MP4',
+        uploadTime: '12:00 17/07/2024',
+    },
+    {
+        path: 'document-2.docx',
+        name: 'Документ 2',
+        description: 'Второй тестовый документ',
+        size: '2.5 MB',
+        type: 'DOCX',
+        uploadTime: '12:45 17/07/2024',
+    },
+    {
+        path: 'audio-1.mp3',
+        name: 'Аудио 1',
+        description: 'Тестовый аудио файл',
+        size: '5 MB',
+        type: 'MP3',
+        uploadTime: '13:30 17/07/2024',
+    },
+    {
+        path: 'audio-2.mp3',
+        name: 'Аудио 2',
+        description: 'Тестовый аудио файл',
+        size: '5 MB',
+        type: 'MP3',
+        uploadTime: '13:30 17/07/2024',
+    },
+    {
+        path: 'audio-3.mp3',
+        name: 'Аудио 3',
+        description: 'Тестовый аудио файл',
+        size: '5 MB',
+        type: 'MP3',
+        uploadTime: '13:30 17/07/2024',
+    },
+    {
+        path: 'audio-4.mp3',
+        name: 'Аудио 4',
+        description: 'Тестовый аудио файл',
+        size: '5 MB',
+        type: 'MP3',
+        uploadTime: '13:30 17/07/2024',
+    },
+    {
+        path: 'audio-5.mp3',
+        name: 'Аудио 5',
+        description: 'Тестовый аудио файл',
+        size: '5 MB',
+        type: 'MP3',
+        uploadTime: '13:30 17/07/2024',
+    },
+    {
+        path: 'audio-6.mp3',
+        name: 'Аудио 6',
+        description: 'Тестовый аудио файл',
+        size: '5 MB',
+        type: 'MP3',
+        uploadTime: '13:30 17/07/2024',
+    },
+    {
+        path: 'audio-7.mp3',
+        name: 'Аудио 7',
+        description: 'Тестовый аудио файл',
+        size: '5 MB',
+        type: 'MP3',
+        uploadTime: '13:30 17/07/2024',
+    },
+    {
+        path: 'audio-8.mp3',
+        name: 'Аудио 8',
+        description: 'Тестовый аудио файл',
+        size: '5 MB',
+        type: 'MP3',
+        uploadTime: '13:30 17/07/2024',
+    },
+    {
+        path: 'audio-99.mp3',
+        name: 'Аудио 99',
+        description: 'Тестовый аудио файл',
+        size: '5 MB',
+        type: 'MP3',
+        uploadTime: '13:30 17/07/2024',
+    },
+    {
+        path: 'audio-19.mp3',
+        name: 'Аудио 19',
+        description: 'Тестовый аудио файл',
+        size: '5 MB',
+        type: 'MP3',
+        uploadTime: '13:30 17/07/2024',
+    },
+];
+
+
+export const fileCategories = [
+    {
+        id: 1,
+        name: 'Обработанные',
+        value: 'process',
+    },
+    {
+        id: 2,
+        name: 'Не обработанные',
+        value: 'not process',
+    },
+    {
+        id: 3,
+        name: 'В архиве',
+        value: 'archive',
+    },
+]
+
+
+
+export const userSaveFiles = [
     {
         name: 'Документ 1',
         description: 'Первый тестовый документ',
@@ -81,63 +217,6 @@ export const userUploadFiles = [
         uploadTime: '13:30 17/07/2024',
         converted: false,
     },
-    // kfd
-    {
-        name: 'Аудио 3',
-        description: 'Тестовый аудио файл',
-        size: '5 MB',
-        type: 'MP3',
-        uploadTime: '13:30 17/07/2024',
-        converted: false,
-    },
-    {
-        name: 'Аудио 4',
-        description: 'Тестовый аудио файл',
-        size: '5 MB',
-        type: 'MP3',
-        uploadTime: '13:30 17/07/2024',
-        converted: false,
-    },
-    {
-        name: 'Аудио 5',
-        description: 'Тестовый аудио файл',
-        size: '5 MB',
-        type: 'MP3',
-        uploadTime: '13:30 17/07/2024',
-        converted: false,
-    },
-    {
-        name: 'Аудио 6',
-        description: 'Тестовый аудио файл',
-        size: '5 MB',
-        type: 'MP3',
-        uploadTime: '13:30 17/07/2024',
-        converted: false,
-    },
-    {
-        name: 'Аудио 7',
-        description: 'Тестовый аудио файл',
-        size: '5 MB',
-        type: 'MP3',
-        uploadTime: '13:30 17/07/2024',
-        converted: false,
-    },
-    {
-        name: 'Аудио 8',
-        description: 'Тестовый аудио файл',
-        size: '5 MB',
-        type: 'MP3',
-        uploadTime: '13:30 17/07/2024',
-        converted: false,
-    },
-    {
-        name: 'Аудио 99',
-        description: 'Тестовый аудио файл',
-        size: '5 MB',
-        type: 'MP3',
-        uploadTime: '13:30 17/07/2024',
-        converted: false,
-    },
     {
         name: 'Аудио 19',
         description: 'Тестовый аудио файл',
@@ -145,24 +224,5 @@ export const userUploadFiles = [
         type: 'MP3',
         uploadTime: '13:30 17/07/2024',
         converted: false,
-    },
-]
-
-
-export const fileCategories = [
-    {
-        id: 1,
-        name: 'Обработанные',
-        value: 'process',
-    },
-    {
-        id: 2,
-        name: 'Не обработанные',
-        value: 'not process',
-    },
-    {
-        id: 3,
-        name: 'В архиве',
-        value: 'archive',
     },
 ]

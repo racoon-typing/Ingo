@@ -22,10 +22,6 @@ function App() {
         />
         <Route path="/convert" element={<ConverterPage />} />
         <Route path="/files" element={<UploadFilesPage />} />
-        {/* <Route path="/files" element={<Files />} /> */}
-        {/* <ConverterPage /> */}
-        {/* <UploadFilesPage /> */}
-        {/* <Files /> */}
       </Routes>
     </>
   );
