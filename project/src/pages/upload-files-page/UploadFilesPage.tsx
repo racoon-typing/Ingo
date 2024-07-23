@@ -2,9 +2,19 @@
 
 import Layout from "../../layout/Layout";
 import FileCategory from "../../components/file-category-list/FileCategoryList";
-import FilesList from "../../components/file-list/FileList";
+import FileList from "../../components/file-list/FileList";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { setFiles } from "../../store/fileSlice";
+import { userSaveFiles } from "../../consts/const";
 
 function UploadFilesPage(): JSX.Element {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setFiles(userSaveFiles));
+  }, [dispatch]);
+
   return (
     <Layout>
       <h2 className="text-2xl mb-6 font-medium">Ваши файлы</h2>
@@ -14,7 +24,7 @@ function UploadFilesPage(): JSX.Element {
       </div>
 
       <div>
-        <FilesList />
+        <FileList />
       </div>
     </Layout>
   );

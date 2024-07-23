@@ -1,3 +1,5 @@
+import { Status } from "../types/types";
+
 export const menuList = [
     {
         id: 1,
@@ -152,77 +154,89 @@ export const fileCategories = [
     {
         id: 1,
         name: 'Обработанные',
-        value: 'process',
+        value: Status.ACTIVE,
     },
     {
         id: 2,
         name: 'Не обработанные',
-        value: 'not process',
+        value: Status.UN_ACTIVE,
     },
     {
         id: 3,
         name: 'В архиве',
-        value: 'archive',
+        value: Status.IN_ARCHIVE,
     },
 ]
 
-
-
 export const userSaveFiles = [
     {
+        id: 1,
         name: 'Документ 1',
         description: 'Первый тестовый документ',
         size: '1.5 MB',
         type: 'PDF',
         uploadTime: '10:30 17/07/2024',
         converted: true,
+        status: Status.ACTIVE,
     },
     {
+        id: 2,
         name: 'Изображение 1',
         description: 'Тестовое изображение высокого качества',
         size: '3.2 MB',
         type: 'JPEG',
         uploadTime: '11:15 17/07/2024',
         converted: false,
+        status: Status.ACTIVE,
     },
     {
+        id: 3,
         name: 'Видео 1',
         description: 'Тестовое видео файл',
         size: '20 MB',
         type: 'MP4',
         uploadTime: '12:00 17/07/2024',
         converted: true,
+        status: Status.ACTIVE,
     },
     {
+        id: 4,
         name: 'Документ 2',
         description: 'Второй тестовый документ',
         size: '2.5 MB',
         type: 'DOCX',
         uploadTime: '12:45 17/07/2024',
         converted: true,
+        status: Status.IN_ARCHIVE,
     },
     {
+        id: 5,
         name: 'Аудио 1',
         description: 'Тестовый аудио файл',
         size: '5 MB',
         type: 'MP3',
         uploadTime: '13:30 17/07/2024',
         converted: false,
+        status: Status.UN_ACTIVE,
     },
     {
+        id: 6,
         name: 'Аудио 2',
         description: 'Тестовый аудио файл',
         size: '5 MB',
         type: 'MP3',
         uploadTime: '13:30 17/07/2024',
         converted: false,
+        status: Status.UN_ACTIVE,
     },
     {
+        id: 7,
         name: 'Аудио 19',
         description: 'Тестовый аудио файл',
         size: '5 MB',
         type: 'MP3',
         uploadTime: '13:30 17/07/2024',
         converted: false,
+        status: Status.IN_ARCHIVE,
     },
 ]

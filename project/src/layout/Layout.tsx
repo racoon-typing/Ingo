@@ -28,9 +28,7 @@ function Layout({ children }: ILayout): JSX.Element {
           </a>
         </div>
 
-        <div className="w-full py-8 pr-5 max-h-screen">
-          <div className="">{children}</div>
-        </div>
+        <div className="w-full py-8 pr-5 max-h-screen overflow-x-auto">{children}</div>
       </div>
     </>
   );

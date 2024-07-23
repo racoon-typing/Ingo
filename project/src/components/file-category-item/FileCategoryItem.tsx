@@ -1,12 +1,12 @@
 // import './FileCategoryItem.scss';
 
 import classNames from "classnames";
-import { IFileCategory } from "../../types/types";
+import { IFileCategory, Status } from "../../types/types";
 
 interface IFileCategoryItemProp {
   category: IFileCategory;
-  activeCategory: number;
-  changeCategoryHandler: (id: number) => void;
+  activeCategory: Status;
+  changeCategoryHandler: (id: Status) => void;
 }
 
 function FileCategoryItem({
@@ -14,11 +14,11 @@ function FileCategoryItem({
   activeCategory,
   changeCategoryHandler,
 }: IFileCategoryItemProp): JSX.Element {
-  const isActive = activeCategory === category.id;
+  const isActive = activeCategory === category.value;
 
   return (
     <li
-      onClick={() => changeCategoryHandler(category.id)}
+      onClick={() => changeCategoryHandler(category.value)}
       key={category.id}
       className={classNames("p-2 px-3 rounded-md", {
         "bg-white shadow": isActive,

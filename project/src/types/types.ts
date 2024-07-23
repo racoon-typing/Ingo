@@ -18,5 +18,27 @@ export interface IMenuItem {
 export interface IFileCategory {
     id: number;
     name: string;
-    value: string;
+    value: Status;
+}
+
+export interface ISaveFile {
+    id: number,
+    name: string,
+    description: string,
+    size: string,
+    type: string,
+    uploadTime: string,
+    converted: boolean,
+    status: Status,
+}
+
+export enum Status {
+    ACTIVE = 'active',
+    UN_ACTIVE = 'un active',
+    IN_ARCHIVE = 'archive',
+}
+
+export enum RootStore {
+    DATA = 'data',
+    USER = 'user',
 }
