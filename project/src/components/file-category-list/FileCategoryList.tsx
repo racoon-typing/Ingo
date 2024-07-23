@@ -14,7 +14,7 @@ function FileCategoryList(): JSX.Element {
   function changeCategoryHandler(value: Status) {
     setActiveCategory(value);
 
-    dispatch(changeCategory({category: value}))
+    dispatch(changeCategory({activeCategory: value}))
   }
 
   return (

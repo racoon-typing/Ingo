@@ -25,6 +25,7 @@ export interface ISaveFile {
     id: number,
     name: string,
     description: string,
+    path: string,
     size: string,
     type: string,
     uploadTime: string,

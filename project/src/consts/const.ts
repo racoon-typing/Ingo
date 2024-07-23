@@ -1,12 +1,12 @@
 import { Status } from "../types/types";
 
 export const menuList = [
-    {
-        id: 1,
-        name: "Личный кабинет",
-        value: "account",
-        link: '/account'
-    },
+    // {
+    //     id: 1,
+    //     name: "Личный кабинет",
+    //     value: "account",
+    //     link: '/account'
+    // },
     {
         id: 2,
         name: "Конвертировать файлы",
@@ -19,12 +19,12 @@ export const menuList = [
         value: "files",
         link: '/files'
     },
-    {
-        id: 4,
-        name: "Статистика",
-        value: "statistic",
-        link: '/statistic'
-    },
+    // {
+    //     id: 4,
+    //     name: "Статистика",
+    //     value: "statistic",
+    //     link: '/statistic'
+    // },
 ];
 
 export const userData = {
@@ -178,6 +178,7 @@ export const userSaveFiles = [
         uploadTime: '10:30 17/07/2024',
         converted: true,
         status: Status.ACTIVE,
+        path: '/dsd/dsm.mp3',
     },
     {
         id: 2,
@@ -188,6 +189,7 @@ export const userSaveFiles = [
         uploadTime: '11:15 17/07/2024',
         converted: false,
         status: Status.ACTIVE,
+        path: '/dsd/dsm.mp3',
     },
     {
         id: 3,
@@ -198,6 +200,7 @@ export const userSaveFiles = [
         uploadTime: '12:00 17/07/2024',
         converted: true,
         status: Status.ACTIVE,
+        path: '/dsd/dsm.mp3',
     },
     {
         id: 4,
@@ -208,6 +211,7 @@ export const userSaveFiles = [
         uploadTime: '12:45 17/07/2024',
         converted: true,
         status: Status.IN_ARCHIVE,
+        path: '/dsd/dsm.mp3',
     },
     {
         id: 5,
@@ -218,6 +222,7 @@ export const userSaveFiles = [
         uploadTime: '13:30 17/07/2024',
         converted: false,
         status: Status.UN_ACTIVE,
+        path: '/dsd/dsm.mp3',
     },
     {
         id: 6,
@@ -228,6 +233,7 @@ export const userSaveFiles = [
         uploadTime: '13:30 17/07/2024',
         converted: false,
         status: Status.UN_ACTIVE,
+        path: '/dsd/dsm.mp3',
     },
     {
         id: 7,
@@ -238,5 +244,6 @@ export const userSaveFiles = [
         uploadTime: '13:30 17/07/2024',
         converted: false,
         status: Status.IN_ARCHIVE,
+        path: '/dsd/dsm.mp3',
     },
 ]

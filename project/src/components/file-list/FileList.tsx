@@ -7,9 +7,7 @@ import { RootState } from "../../store/store";
 
 
 function FileList(): JSX.Element {
-  const files = useSelector((state: RootState) => state.data.files);
-  console.log(files);
-  
+  const files = useSelector((state: RootState) => state.data.filteredFiles);
 
   return (
     <ul className="grid grid-cols-2 gap-5">
