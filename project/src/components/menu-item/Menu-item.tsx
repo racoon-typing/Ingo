@@ -5,7 +5,7 @@ import { IMenuItem } from "../../types/types";
 
 interface IMenuItemProp {
   active: string;
-  handleChangeActive: (id: string) => void;
+  handleChangeActive: (id: string, link: string) => void;
   item: IMenuItem;
 }
 
@@ -14,12 +14,12 @@ function MenuItem({
   handleChangeActive,
   item,
 }: IMenuItemProp): JSX.Element {
-  const { name, value } = item;
+  const { name, value, link } = item;
   const isActive = active === value;
 
   return (
     <li
-      onClick={() => handleChangeActive(value)}
+      onClick={() => handleChangeActive(value, link)}
       className={classNames(
         "menu__item p-4 px-2 rounded-md text-black mb-2 duration-300",
         {

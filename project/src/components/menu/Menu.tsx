@@ -3,32 +3,27 @@
 import { useEffect, useState } from "react";
 import MenuItem from "../menu-item/Menu-item";
 import { IMenuItem } from "../../types/types";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 interface IMenuProp {
   list: IMenuItem[];
 }
 
 function Menu({ list }: IMenuProp): JSX.Element {
-  const [activeItem, setActiveItem] = useState<string>("convert");
   const navigate = useNavigate();
+  const location = useLocation();
+  const [activeItem, setActiveItem] = useState<string>("");
 
   useEffect(() => {
-    // Найти ссылку, соответствующую активному элементу
-    const link = list.find((item) => item.value === activeItem)?.link || "";
-    console.log("Navigating to:", link); // Отладочный вывод
+    // Устанавливаем активный элемент на основе текущего пути
+    const currentPath = location.pathname;
+    const activeItem = list.find(item => item.link === currentPath)?.value || "convert";
+    setActiveItem(activeItem);
+  }, [location, list]);
 
-    // Выполнить навигацию
-    if (link) {
-      navigate(link);
-    }
-  }, [activeItem, list, navigate]); // Выполняем навигацию при изменении activeItem
-
-  function handleChangeActive(value: string) {
-    // Обновление состояния активного элемента
-    if (value !== activeItem) {
-      setActiveItem(value);
-    }
+  function handleChangeActive(value: string, link: string) {
+    setActiveItem(value);
+    navigate(link);
   }
 
   return (

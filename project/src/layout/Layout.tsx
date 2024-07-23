@@ -23,7 +23,7 @@ function Layout({ children }): JSX.Element {
           </a>
         </div>
 
-        <div className="w-full py-8 pr-5">
+        <div className="w-full py-8 pr-5 max-h-screen">
           <div className="">{children}</div>
         </div>
       </div>
