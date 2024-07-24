@@ -1,4 +1,4 @@
-import { Status } from "../types/types";
+import { FormFieldType, Status } from "../types/types";
 
 export const menuList = [
     // {
@@ -245,5 +245,60 @@ export const userSaveFiles = [
         converted: false,
         status: Status.IN_ARCHIVE,
         path: '/dsd/dsm.mp3',
+    },
+]
+
+export const loginFormFields= [
+    {
+        id: 'firstName',
+        name: 'firstName',
+        label: 'Имя',
+        placeholder: 'Даниил',
+        type: 'text',
+        inputType: FormFieldType.INPUT,
+    },
+    {
+        id: 'secondName',
+        name: 'secondName',
+        label: 'Фамилия',
+        placeholder: 'Суворов',
+        type: 'text',
+        inputType: FormFieldType.INPUT,
+    },
+    {
+        id: 'tel',
+        name: 'tel',
+        label: 'Телефон',
+        placeholder: '+7 123 456 78 90',
+        type: 'tel',
+        inputType: FormFieldType.INPUT,
+    },
+    {
+        id: 'password',
+        name: 'password',
+        label: 'Пароль',
+        placeholder: '***',
+        type: 'password',
+        inputType: FormFieldType.INPUT,
+    },
+    {
+        id: 'userKey',
+        name: 'userKey',
+        label: 'Ключ',
+        placeholder: '12345',
+        type: 'text',
+        inputType: FormFieldType.INPUT,
+    },
+    {
+        id: 'department',
+        name: 'department',
+        label: 'Подразделение',
+        placeholder: 'Даниил',
+        inputType: FormFieldType.SELECT,
+        options: [
+            {name: 'Подразделение 1', value: 1},
+            {name: 'Подразделение 2', value: 2},
+            {name: 'Подразделение 3', value: 3},
+        ]
     },
 ]

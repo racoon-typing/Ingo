@@ -43,3 +43,21 @@ export enum RootStore {
     DATA = 'data',
     USER = 'user',
 }
+
+export enum FormFieldType {
+    INPUT = 'input',
+    SELECT = 'select',
+}
+
+export interface FormField {
+    id: string;
+    name: string;
+    label: string;
+    placeholder: string;
+    inputType: FormFieldType,
+    type?: string;
+    className?: string;
+    options?: [
+        { name: string, value: number },
+    ]
+}
