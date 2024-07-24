@@ -57,7 +57,5 @@ export interface FormField {
     inputType: FormFieldType,
     type?: string;
     className?: string;
-    options?: [
-        { name: string, value: number },
-    ]
+    options?: { name: string, value: number }[],
 }

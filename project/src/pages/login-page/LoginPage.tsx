@@ -1,6 +1,5 @@
 // import "./LoginPage.scss";
 
-import { useState } from "react";
 import FormFiled from "../../components/ui/form-field/FormFiled";
 import { loginFormFields } from "../../consts/const";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
@@ -10,24 +9,7 @@ type FormData = {
 };
 
 function LoginPage(): JSX.Element {
-  // const [formData, setFormData] = useState<FormData>({});
-
-  // const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-  //   const { name, value } = e.target;
-  //   setFormData(prevState => ({ ...prevState, [name]: value }));
-  // };
-
-  // const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-  //   e.preventDefault();
-  //   console.log('Submitted data:', formData);
-  //   // Вы можете выполнить дополнительные действия с данными здесь
-  // };
-
-  const {
-    control,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FormData>({
+  const { control, handleSubmit } = useForm<FormData>({
     defaultValues: loginFormFields.reduce((acc, field) => {
       acc[field.name] = "";
       return acc;
@@ -52,19 +34,16 @@ function LoginPage(): JSX.Element {
           className="flex flex-col bg-white text-black rounded p-5 text-md"
         >
           <div className="grid grid-cols-2 mb-8 gap-4">
-            {/* {loginFormFields
-              ? loginFormFields.map((field) => <FormFiled key={field.id} value={field} onChange={handleChange} />)
-              : ""} */}
-
             {loginFormFields.map((item) => (
               <Controller
                 key={item.id}
                 name={item.name}
                 control={control}
-                render={({ field: formField }) => (
+                render={({ field }) => (
                   <FormFiled
                     value={item}
-                    {...formField} // Передаем пропсы в компонент FormFiled
+                    onChange={field.onChange}
+                    onBlur={field.onBlur}
                   />
                 )}
               />

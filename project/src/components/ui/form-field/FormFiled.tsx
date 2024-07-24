@@ -1,34 +1,20 @@
-// import './FormFiled.scss';
-
 import React from "react";
 import { FormField, FormFieldType } from "../../../types/types";
 
-// interface IFormFiled {
-//   value: FormField;
-// }
-
-interface IFormFiled {
+interface IFormFiledProps {
   value: FormField;
-  onChange: (
+  onChange?: (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => void;
-  onBlur: () => void;
-  name: string;
-  ref: React.Ref<any>;
+  onBlur?: () => void;
 }
 
-// function FormFiled({ value }: IFormFiled): JSX.Element {
-//   const { id, name, label, placeholder, inputType, type, className, options } =
-//     value;
-
-function FormFiled({
+const FormFiled: React.FC<IFormFiledProps> = ({
   value,
   onChange,
   onBlur,
-  name,
-  ref,
-}: IFormFiled): JSX.Element {
-  const { id, label, placeholder, inputType, type, className, options } = value;
+}) => {
+  const { id, name, label, inputType, className, options, placeholder, type } = value;
 
   return (
     <div className={className}>
@@ -36,7 +22,7 @@ function FormFiled({
         {label}
       </label>
 
-      {inputType && inputType === FormFieldType.INPUT ? (
+      {inputType === FormFieldType.INPUT ? (
         <input
           id={id}
           name={name}
@@ -45,7 +31,6 @@ function FormFiled({
           placeholder={placeholder}
           onChange={onChange}
           onBlur={onBlur}
-          ref={ref}
         />
       ) : inputType === FormFieldType.SELECT ? (
         <select
@@ -54,7 +39,6 @@ function FormFiled({
           id={id}
           onChange={onChange}
           onBlur={onBlur}
-          ref={ref}
         >
           {options && options.length > 0 ? (
             options.map((option) => (
@@ -69,6 +53,6 @@ function FormFiled({
       ) : null}
     </div>
   );
-}
+};
 
 export default FormFiled;
