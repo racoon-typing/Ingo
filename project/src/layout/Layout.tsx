@@ -5,6 +5,7 @@ import Menu from "../components/menu/Menu";
 import UserAcc from "../components/user-acс/UserAcc";
 import { menuList } from "../consts/const";
 import React from "react";
+import { Link } from "react-router-dom";
 
 interface ILayout {
   children: React.ReactNode;
@@ -13,11 +14,11 @@ interface ILayout {
 function Layout({ children }: ILayout): JSX.Element {
   return (
     <>
-      <div className="wrapper grid grid-cols-[300px_1fr] gap-8 w-full h-full">
+      <div className="grid grid-cols-[300px_1fr] gap-8 w-full h-full">
         <div className="menu flex flex-col bg-sky-950 text-white py-10 px-5">
-          <h1 className="menu__logo text-3xl text-center mb-10 font-medium">
+          <Link to={'/'} className="menu__logo text-3xl text-center mb-10 font-medium">
             ИНГО.Безопасность
-          </h1>
+          </Link>
 
           <UserAcc />
 

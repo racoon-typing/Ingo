@@ -3,6 +3,7 @@ import { Link, Route, Routes } from "react-router-dom";
 import ConverterPage from "../pages/converter-page/ConverterPage";
 import UploadFilesPage from "../pages/upload-files-page/UploadFilesPage";
 import "./App.css";
+import MainPage from "../pages/main-page/MainPage";
 
 function App() {
   return (
@@ -11,13 +12,14 @@ function App() {
         <Route
           path="/"
           element={
-            <div>
-              <h1>Главная</h1>
+            <MainPage />
+            // <div>
+            //   <h1>Главная</h1>
 
-              <Link to={'/convert'}>convert</Link>
-              <br />
-              <Link to={'/files'}>files</Link>
-            </div>
+            //   <Link to={'/convert'}>convert</Link>
+            //   <br />
+            //   <Link to={'/files'}>files</Link>
+            // </div>
           }
         />
         <Route path="/convert" element={<ConverterPage />} />

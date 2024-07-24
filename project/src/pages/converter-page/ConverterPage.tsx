@@ -12,7 +12,8 @@ function ConverterPage(): JSX.Element {
       <div className="grid grid-cols-[50%_1fr] gap-y-10 gap-x-6">
         <Converter />
 
-        <CovertStatistic />
+        <div></div>
+        {/* <CovertStatistic /> */}
 
         <div className="col-span-full">
           <h3 className="text-2xl font-medium mb-3">Загруженные файлы</h3>
