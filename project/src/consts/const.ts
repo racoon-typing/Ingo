@@ -254,8 +254,8 @@ export const loginFormFields= [
         name: 'firstName',
         label: 'Имя',
         placeholder: 'Даниил',
-        type: 'text',
         inputType: FormFieldType.INPUT,
+        type: 'text',
     },
     {
         id: 'secondName',

@@ -53,7 +53,7 @@ export interface FormField {
     id: string;
     name: string;
     label: string;
-    placeholder: string;
+    placeholder?: string;
     inputType: FormFieldType,
     type?: string;
     className?: string;
