@@ -1,4 +1,5 @@
-import { FormFieldType, Status } from "../types/types";
+import { FormData } from "../pages/login-page/LoginPage";
+import { Department, FormField, FormFieldType, Status } from "../types/types";
 
 export const menuList = [
     // {
@@ -248,7 +249,7 @@ export const userSaveFiles = [
     },
 ]
 
-export const loginFormFields= [
+export const loginFormFields: Array<FormField & {name: keyof FormData}> = [
     {
         id: 'firstName',
         name: 'firstName',
@@ -258,8 +259,8 @@ export const loginFormFields= [
         type: 'text',
     },
     {
-        id: 'secondName',
-        name: 'secondName',
+        id: 'lastName',
+        name: 'lastName',
         label: 'Фамилия',
         placeholder: 'Суворов',
         type: 'text',
@@ -296,9 +297,9 @@ export const loginFormFields= [
         placeholder: 'Даниил',
         inputType: FormFieldType.SELECT,
         options: [
-            {name: 'Подразделение 1', value: 1},
-            {name: 'Подразделение 2', value: 2},
-            {name: 'Подразделение 3', value: 3},
+            { name: Department.D1, value: 1 },
+            { name: Department.D2, value: 2 },
+            { name: Department.D3, value: 3 },
         ]
     },
 ]

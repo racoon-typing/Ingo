@@ -2,21 +2,45 @@
 
 import FormFiled from "../../components/ui/form-field/FormFiled";
 import { loginFormFields } from "../../consts/const";
-import { Controller, SubmitHandler, useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
+// import { Department } from "../../types/types";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 
-type FormData = {
-  [key: string]: string | number | undefined;
+// Определите вашу схему Zod
+const loginFormFieldsSchema = z.object({
+  firstName: z.string().nonempty("Имя не может быть пустым"),
+  lastName: z.string().nonempty("Фамилия не может быть пустой"),
+  tel: z
+    .string()
+    .regex(
+      /^\+7 \d{3} \d{3} \d{2} \d{2}$/,
+      "Введите правильный телефонный номер"
+    ),
+  password: z.string().min(8, "Пароль должен быть не менее 8 символов"),
+  userKey: z.string().nonempty("Ключ не может быть пустым"),
+  department: z.number().min(1, "Выберите подразделение"),
+});
+
+export type FormData = z.infer<typeof loginFormFieldsSchema>;
+
+const formDefaultValues: FormData = {
+  firstName: "",
+  lastName: "",
+  tel: "",
+  password: "",
+  userKey: "",
+  department: 3,
 };
 
 function LoginPage(): JSX.Element {
   const { control, handleSubmit } = useForm<FormData>({
-    defaultValues: loginFormFields.reduce((acc, field) => {
-      acc[field.name] = "";
-      return acc;
-    }, {} as FormData),
+    defaultValues: formDefaultValues,
+    resolver: zodResolver(loginFormFieldsSchema),
+    mode: "onChange",
   });
 
-  const onSubmit: SubmitHandler<FormData> = (data) => {
+  const onSubmit = (data: FormData) => {
     console.log("Submitted data:", data);
     // Выполните дополнительные действия с данными здесь
   };
@@ -42,6 +66,8 @@ function LoginPage(): JSX.Element {
                 render={({ field }) => (
                   <FormFiled
                     value={item}
+                    fieldValue={field.value}
+                    // errors={field}
                     onChange={field.onChange}
                     onBlur={field.onBlur}
                   />

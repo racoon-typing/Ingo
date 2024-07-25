@@ -49,6 +49,14 @@ export enum FormFieldType {
     SELECT = 'select',
 }
 
+export enum Department {
+    D1 = 'Подразделение 1',
+    D2 = 'Подразделение 2',
+    D3 = 'Подразделение 3',
+}
+
+export type LoginFormSelect = { name: Department, value: number }[];
+
 export interface FormField {
     id: string;
     name: string;
@@ -57,5 +65,17 @@ export interface FormField {
     inputType: FormFieldType,
     type?: string;
     className?: string;
-    options?: { name: string, value: number }[],
+    options?: LoginFormSelect,
 }
+
+export interface LoginFormData {
+    firstName: string;
+    lastName: string;
+    tel: string;
+    password: string;
+    userKey: string;
+    department: number;
+}
+
+
+
