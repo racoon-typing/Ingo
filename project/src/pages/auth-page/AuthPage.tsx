@@ -1,24 +1,16 @@
 // import "./LoginPage.scss";
 
 import FormFiled from "../../components/ui/form-field/FormFiled";
-import { CURRENT_USER_ID, loginFormFields } from "../../consts/const";
+import { authFormFields, CURRENT_USER_ID } from "../../consts/const";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { userService } from "../../service/userService";
+// import { userService } from "../../service/userService";
 import { useNavigate } from "react-router-dom";
 
 // Определите вашу схему Zod
-const loginFormFieldsSchema = z.object({
-  firstName: z
-    .string()
-    .nonempty("Имя не может быть пустым")
-    .min(2, "Имя должно быть больше 2 символов"),
-  lastName: z
-    .string()
-    .nonempty("Фамилия не может быть пустой")
-    .min(2, "Фамилия должна быть больше 2 символов"),
-  tel: z.string().regex(/^\+7\d{10}$/, "Введите правильный телефонный номер"),
+const authFormFieldsSchema = z.object({
+  email: z.string().email({ message: "Неверный адрес электронной почты." }),
   password: z
     .string()
     .min(8, "Пароль должен быть не менее 8 символов")
@@ -28,46 +20,36 @@ const loginFormFieldsSchema = z.object({
       /[!@#$%^&*(),.?"':;{}|<>]/,
       "Пароль должен содержать хотя бы один специальный символ"
     ),
-  userKey: z
-    .string()
-    .nonempty("Ключ не может быть пустым")
-    .length(5, "Ключ должен быть из 5 символов"),
-  department: z.string().min(1, "Выберите подразделение"),
 });
 
-export type LoginFormData = z.infer<typeof loginFormFieldsSchema>;
+export type AuthFormData = z.infer<typeof authFormFieldsSchema>;
 
-const formDefaultValues: LoginFormData = {
-  firstName: "",
-  lastName: "",
-  tel: "",
+const formDefaultValues: AuthFormData = {
+  email: "",
   password: "",
-  userKey: "",
-  department: "1",
 };
 
 function AuthPage(): JSX.Element {
   const navigate = useNavigate();
-  const { control, handleSubmit, reset } = useForm<LoginFormData>({
+  const { control, handleSubmit, reset } = useForm<AuthFormData>({
     defaultValues: formDefaultValues,
-    resolver: zodResolver(loginFormFieldsSchema),
+    resolver: zodResolver(authFormFieldsSchema),
     mode: "onChange",
   });
 
-  const onSubmit = async (userData: LoginFormData) => {
+  const onSubmit = async (userData: AuthFormData) => {
     console.log("Submitted data:", userData);
 
     try {
-      const user = await userService.createUser(userData);
-      localStorage.setItem(CURRENT_USER_ID, user.id);
-      console.log('User successfully created:', user);
+      // const user = await userService.createUser(userData);
+      // localStorage.setItem(CURRENT_USER_ID, user.id);
+      // console.log('User successfully created:', user);
 
       // Очищает форму
       reset({});
-
       navigate('/account', {replace: true});
     } catch (error) {
-      console.error('Error creating user:', error);
+      console.error("Error creating user:", error);
     }
   };
 
@@ -77,14 +59,14 @@ function AuthPage(): JSX.Element {
     from-blue-900 to-sky-950"
     >
       <div className="text-white w-1/2 max-w-xl">
-        <h1 className="text-5xl font-bold text-center mb-6">Регистрация</h1>
+        <h1 className="text-5xl font-bold text-center mb-6">Авторизация</h1>
 
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="flex flex-col bg-white text-black rounded p-5 text-md"
         >
-          <div className="grid grid-cols-2 mb-8 gap-4">
-            {loginFormFields.map((item) => (
+          <div className="grid mb-8 gap-4">
+            {authFormFields.map((item) => (
               <Controller
                 key={item.id}
                 name={item.name}
@@ -106,7 +88,7 @@ function AuthPage(): JSX.Element {
             className="bg-blue-600 text-white rounded px-3 py-3"
             type="submit"
           >
-            Зарегистрироваться
+            Войти
           </button>
         </form>
       </div>

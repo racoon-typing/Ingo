@@ -15,8 +15,10 @@ function UserAcc(): JSX.Element {
   useEffect(() => {
     async function getUserInfo(userId: string) {
       try {
-        const userInfo = await userService.getUser(userId);
+        // const userInfo = await userService.getUser(userId);
         console.log("User info:", userInfo);
+
+
         setUserInfo(userInfo)
       } catch (error) {
         console.error("Error fetching user:", error);
@@ -26,7 +28,7 @@ function UserAcc(): JSX.Element {
     if (userId !== null) {
       getUserInfo(userId);
     }
-  }, [userId]);
+  }, [userId, userInfo]);
 
   return (
     <Link to={"/account"}>

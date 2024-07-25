@@ -6,6 +6,7 @@ import "./App.css";
 import MainPage from "../pages/main-page/MainPage";
 import LoginPage from "../pages/login-page/LoginPage";
 import AccountPage from "../pages/account-page/AccountPage";
+import AuthPage from "../pages/auth-page/AuthPage";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/auth" element={<AuthPage />} />
         <Route path="/account" element={<AccountPage />} />
         <Route path="/convert" element={<ConverterPage />} />
         <Route path="/files" element={<UploadFilesPage />} />

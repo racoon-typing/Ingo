@@ -21,4 +21,14 @@ export const userService = {
             throw error;
         }
     },
+
+    async deleteUser(id: string) {
+        try {
+            const response = await $api.delete(`/users/${id}`);
+            return response.data;
+        } catch (error) {
+            console.error('Error get user:', error);
+            throw error;
+        }
+    },
 }

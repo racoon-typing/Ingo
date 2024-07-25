@@ -1,7 +1,6 @@
 // import "./MainPage.scss";
 
 import { Link } from "react-router-dom";
-
 function MainPage(): JSX.Element {
   return (
     <div

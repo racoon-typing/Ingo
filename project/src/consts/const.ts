@@ -1,3 +1,4 @@
+import { AuthFormData } from "../pages/auth-page/AuthPage";
 import { LoginFormData } from "../pages/login-page/LoginPage";
 import { Department, FormField, FormFieldType, Status } from "../types/types";
 
@@ -251,7 +252,7 @@ export const userSaveFiles = [
     },
 ]
 
-export const loginFormFields: Array<FormField & {name: keyof LoginFormData}> = [
+export const loginFormFields: Array<FormField & { name: keyof LoginFormData }> = [
     {
         id: 'firstName',
         name: 'firstName',
@@ -312,5 +313,25 @@ export const loginFormFields: Array<FormField & {name: keyof LoginFormData}> = [
             { name: Department.D2, value: 2 },
             { name: Department.D3, value: 3 },
         ]
+    },
+]
+
+
+export const authFormFields: Array<FormField & { name: keyof AuthFormData }> = [
+    {
+        id: 'email',
+        name: 'email',
+        label: 'Почта',
+        placeholder: 'test@mail.ru',
+        type: 'email',
+        inputType: FormFieldType.INPUT,
+    },
+    {
+        id: 'password',
+        name: 'password',
+        label: 'Пароль',
+        placeholder: '***',
+        type: 'password',
+        inputType: FormFieldType.INPUT,
     },
 ]
