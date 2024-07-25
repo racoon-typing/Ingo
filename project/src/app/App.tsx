@@ -5,6 +5,7 @@ import UploadFilesPage from "../pages/upload-files-page/UploadFilesPage";
 import "./App.css";
 import MainPage from "../pages/main-page/MainPage";
 import LoginPage from "../pages/login-page/LoginPage";
+import AccountPage from "../pages/account-page/AccountPage";
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/account" element={<ConverterPage />} />
+        <Route path="/account" element={<AccountPage />} />
         <Route path="/convert" element={<ConverterPage />} />
         <Route path="/files" element={<UploadFilesPage />} />
       </Routes>

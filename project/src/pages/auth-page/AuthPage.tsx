@@ -3,7 +3,6 @@
 import FormFiled from "../../components/ui/form-field/FormFiled";
 import { CURRENT_USER_ID, loginFormFields } from "../../consts/const";
 import { Controller, useForm } from "react-hook-form";
-// import { Department } from "../../types/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { userService } from "../../service/userService";
@@ -19,7 +18,6 @@ const loginFormFieldsSchema = z.object({
     .string()
     .nonempty("Фамилия не может быть пустой")
     .min(2, "Фамилия должна быть больше 2 символов"),
-  email: z.string().email({ message: "Неверный адрес электронной почты." }),
   tel: z.string().regex(/^\+7\d{10}$/, "Введите правильный телефонный номер"),
   password: z
     .string()
@@ -42,14 +40,13 @@ export type LoginFormData = z.infer<typeof loginFormFieldsSchema>;
 const formDefaultValues: LoginFormData = {
   firstName: "",
   lastName: "",
-  email: "",
   tel: "",
   password: "",
   userKey: "",
   department: "1",
 };
 
-function LoginPage(): JSX.Element {
+function AuthPage(): JSX.Element {
   const navigate = useNavigate();
   const { control, handleSubmit, reset } = useForm<LoginFormData>({
     defaultValues: formDefaultValues,
@@ -63,14 +60,14 @@ function LoginPage(): JSX.Element {
     try {
       const user = await userService.createUser(userData);
       localStorage.setItem(CURRENT_USER_ID, user.id);
-      console.log("User successfully created:", user);
+      console.log('User successfully created:', user);
 
       // Очищает форму
       reset({});
 
-      navigate("/account", { replace: true });
+      navigate('/account', {replace: true});
     } catch (error) {
-      console.error("Error creating user:", error);
+      console.error('Error creating user:', error);
     }
   };
 
@@ -117,4 +114,4 @@ function LoginPage(): JSX.Element {
   );
 }
 
-export default LoginPage;
+export default AuthPage;

@@ -1,6 +1,8 @@
 import { LoginFormData } from "../pages/login-page/LoginPage";
 import { Department, FormField, FormFieldType, Status } from "../types/types";
 
+export const CURRENT_USER_ID = 'current_user_id';
+
 export const menuList = [
     {
         id: 1,
@@ -267,6 +269,14 @@ export const loginFormFields: Array<FormField & {name: keyof LoginFormData}> = [
         inputType: FormFieldType.INPUT,
     },
     {
+        id: 'email',
+        name: 'email',
+        label: 'Почта',
+        placeholder: 'test@mail.ru',
+        type: 'email',
+        inputType: FormFieldType.INPUT,
+    },
+    {
         id: 'tel',
         name: 'tel',
         label: 'Телефон',
@@ -291,6 +301,7 @@ export const loginFormFields: Array<FormField & {name: keyof LoginFormData}> = [
         inputType: FormFieldType.INPUT,
     },
     {
+        className: 'col-span-full',
         id: 'department',
         name: 'department',
         label: 'Подразделение',

@@ -10,5 +10,15 @@ export const userService = {
             console.error('Error creating user:', error);
             throw error;
         }
-    }
+    },
+
+    async getUser(id: string) {
+        try {
+            const response = await $api.get(`/users/${id}`);
+            return response.data;
+        } catch (error) {
+            console.error('Error get user:', error);
+            throw error;
+        }
+    },
 }
