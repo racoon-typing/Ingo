@@ -1,4 +1,4 @@
-import CovertStatistic from "../../components/convert-statistic/CovertStatistic";
+// import CovertStatistic from "../../components/convert-statistic/CovertStatistic";
 import Converter from "../../components/converter/Converter";
 import UploadFilesTable from "../../components/upload-files-table/UploadFilesTable";
 import Layout from "../../layout/Layout";

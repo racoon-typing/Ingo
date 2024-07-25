@@ -1,13 +1,13 @@
-import { FormData } from "../pages/login-page/LoginPage";
+import { LoginFormData } from "../pages/login-page/LoginPage";
 import { Department, FormField, FormFieldType, Status } from "../types/types";
 
 export const menuList = [
-    // {
-    //     id: 1,
-    //     name: "Личный кабинет",
-    //     value: "account",
-    //     link: '/account'
-    // },
+    {
+        id: 1,
+        name: "Личный кабинет",
+        value: "account",
+        link: '/account'
+    },
     {
         id: 2,
         name: "Конвертировать файлы",
@@ -249,7 +249,7 @@ export const userSaveFiles = [
     },
 ]
 
-export const loginFormFields: Array<FormField & {name: keyof FormData}> = [
+export const loginFormFields: Array<FormField & {name: keyof LoginFormData}> = [
     {
         id: 'firstName',
         name: 'firstName',

@@ -74,7 +74,7 @@ export interface LoginFormData {
     tel: string;
     password: string;
     userKey: string;
-    department: number;
+    department: string;
 }
 
 

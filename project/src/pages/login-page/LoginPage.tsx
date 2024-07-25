@@ -6,43 +6,69 @@ import { Controller, useForm } from "react-hook-form";
 // import { Department } from "../../types/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { userService } from "../../service/userService";
+import { useNavigate } from "react-router-dom";
 
 // Определите вашу схему Zod
 const loginFormFieldsSchema = z.object({
-  firstName: z.string().nonempty("Имя не может быть пустым"),
-  lastName: z.string().nonempty("Фамилия не может быть пустой"),
-  tel: z
+  firstName: z
     .string()
+    .nonempty("Имя не может быть пустым")
+    .min(2, "Имя должно быть больше 2 символов"),
+  lastName: z
+    .string()
+    .nonempty("Фамилия не может быть пустой")
+    .min(2, "Фамилия должна быть больше 2 символов"),
+  tel: z.string().regex(/^\+7\d{10}$/, "Введите правильный телефонный номер"),
+  password: z
+    .string()
+    .min(8, "Пароль должен быть не менее 8 символов")
+    .regex(/[A-Z]/, "Пароль должен содержать хотя бы одну большую букву")
+    .regex(/[0-9]/, "Пароль должен содержать хотя бы одну цифру")
     .regex(
-      /^\+7 \d{3} \d{3} \d{2} \d{2}$/,
-      "Введите правильный телефонный номер"
+      /[!@#$%^&*(),.?"':;{}|<>]/,
+      "Пароль должен содержать хотя бы один специальный символ"
     ),
-  password: z.string().min(8, "Пароль должен быть не менее 8 символов"),
-  userKey: z.string().nonempty("Ключ не может быть пустым"),
-  department: z.number().min(1, "Выберите подразделение"),
+  userKey: z
+    .string()
+    .nonempty("Ключ не может быть пустым")
+    .length(5, "Ключ должен быть из 5 символов"),
+  department: z.string().min(1, "Выберите подразделение"),
 });
 
-export type FormData = z.infer<typeof loginFormFieldsSchema>;
+export type LoginFormData = z.infer<typeof loginFormFieldsSchema>;
 
-const formDefaultValues: FormData = {
+const formDefaultValues: LoginFormData = {
   firstName: "",
   lastName: "",
   tel: "",
   password: "",
   userKey: "",
-  department: 3,
+  department: "1",
 };
 
 function LoginPage(): JSX.Element {
-  const { control, handleSubmit } = useForm<FormData>({
+  const navigate = useNavigate();
+  const { control, handleSubmit, reset } = useForm<LoginFormData>({
     defaultValues: formDefaultValues,
     resolver: zodResolver(loginFormFieldsSchema),
     mode: "onChange",
   });
 
-  const onSubmit = (data: FormData) => {
-    console.log("Submitted data:", data);
-    // Выполните дополнительные действия с данными здесь
+  const onSubmit = async (userData: LoginFormData) => {
+    console.log("Submitted data:", userData);
+
+    try {
+      const user = await userService.createUser(userData);
+      console.log('User successfully created:', user);
+
+      // Очищает форму
+      reset({});
+
+      navigate('/account', {replace: true});
+    } catch (error) {
+      console.error('Error creating user:', error);
+    }
   };
 
   return (
@@ -63,13 +89,13 @@ function LoginPage(): JSX.Element {
                 key={item.id}
                 name={item.name}
                 control={control}
-                render={({ field }) => (
+                render={({ field, fieldState }) => (
                   <FormFiled
                     value={item}
                     fieldValue={field.value}
-                    // errors={field}
                     onChange={field.onChange}
                     onBlur={field.onBlur}
+                    error={fieldState.error}
                   />
                 )}
               />

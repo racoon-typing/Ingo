@@ -12,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/account" element={<ConverterPage />} />
         <Route path="/convert" element={<ConverterPage />} />
         <Route path="/files" element={<UploadFilesPage />} />
       </Routes>
