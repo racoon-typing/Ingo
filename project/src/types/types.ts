@@ -72,6 +72,7 @@ export interface LoginFormData {
     firstName: string;
     lastName: string;
     tel: string;
+    email: string;
     password: string;
     userKey: string;
     department: string;

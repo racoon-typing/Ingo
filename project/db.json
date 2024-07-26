@@ -1,3 +1,14 @@
 {
-  "users": []
+  "users": [
+    {
+      "id": "85f3",
+      "firstName": "test",
+      "lastName": "testov",
+      "email": "cscxz@mail.ru",
+      "tel": "+79271621212",
+      "password": "dsds112xZ@",
+      "userKey": "11111",
+      "department": "1"
+    }
+  ]
 }

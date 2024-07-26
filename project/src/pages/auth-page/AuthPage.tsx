@@ -1,12 +1,13 @@
 // import "./LoginPage.scss";
 
 import FormFiled from "../../components/ui/form-field/FormFiled";
-import { authFormFields, CURRENT_USER_ID } from "../../consts/const";
+import { authFormFields, CURRENT_USER, CURRENT_USER_ID } from "../../consts/const";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-// import { userService } from "../../service/userService";
 import { useNavigate } from "react-router-dom";
+import { userService } from "../../service/userService";
+import { LoginFormData } from "../../types/types";
 
 // Определите вашу схему Zod
 const authFormFieldsSchema = z.object({
@@ -41,9 +42,9 @@ function AuthPage(): JSX.Element {
     console.log("Submitted data:", userData);
 
     try {
-      // const user = await userService.createUser(userData);
-      // localStorage.setItem(CURRENT_USER_ID, user.id);
-      // console.log('User successfully created:', user);
+      const user: LoginFormData & {id: string} = await userService.authUser(userData.email, userData.password);
+      localStorage.setItem(CURRENT_USER, JSON.stringify({id: user.id, email: user.email}));
+      console.log('User successfully auth:', user);
 
       // Очищает форму
       reset({});

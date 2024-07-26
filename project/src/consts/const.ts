@@ -2,7 +2,7 @@ import { AuthFormData } from "../pages/auth-page/AuthPage";
 import { LoginFormData } from "../pages/login-page/LoginPage";
 import { Department, FormField, FormFieldType, Status } from "../types/types";
 
-export const CURRENT_USER_ID = 'current_user_id';
+export const CURRENT_USER = 'current_user';
 
 export const menuList = [
     {
@@ -335,3 +335,10 @@ export const authFormFields: Array<FormField & { name: keyof AuthFormData }> = [
         inputType: FormFieldType.INPUT,
     },
 ]
+
+
+export const userKeyStatus = {
+    '11111': 'начальник',
+    '22222': 'сотрудник',
+    '33333': 'наблюдатель',
+}
