@@ -4,7 +4,7 @@ import { UserRound } from "lucide-react";
 import { CURRENT_USER } from "../../consts/const";
 import { userService } from "../../service/userService";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { LoginFormData } from "../../types/types";
 
 function UserAcc(): JSX.Element {
@@ -15,7 +15,6 @@ function UserAcc(): JSX.Element {
     async function getUserInfo(userId: string) {
       try {
         const userInfo = await userService.getUser(userId);
-        console.log("User info:", userInfo);
         setUserInfo(userInfo);
       } catch (error) {
         console.error("Error fetching user:", error);
@@ -69,5 +68,6 @@ function UserAcc(): JSX.Element {
     </Link>
   );
 }
+useMemo
 
 export default UserAcc;

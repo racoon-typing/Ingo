@@ -15,6 +15,18 @@ export interface IMenuItem {
     link: string;
 }
 
+export enum Status {
+    PROCESSED = 'processed',
+    UN_PROCESSED = 'un_processed',
+    IN_ARCHIVE = 'archive',
+}
+
+export enum FileDanger {
+    DANGER = 'danger',
+    ANALIS = 'analis',
+    CHECKED = 'checked',
+}
+
 export interface IFileCategory {
     id: number;
     name: string;
@@ -31,12 +43,7 @@ export interface ISaveFile {
     uploadTime: string,
     converted: boolean,
     status: Status,
-}
-
-export enum Status {
-    ACTIVE = 'active',
-    UN_ACTIVE = 'un active',
-    IN_ARCHIVE = 'archive',
+    danger: FileDanger,
 }
 
 export enum RootStore {

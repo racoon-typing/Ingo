@@ -9,19 +9,24 @@ import { Status } from "../../types/types";
 
 function FileCategoryList(): JSX.Element {
   const dispatch = useDispatch();
-  const [activeCategory, setActiveCategory] = useState<Status>(Status.ACTIVE);
+  const [activeCategory, setActiveCategory] = useState<Status>(Status.PROCESSED);
 
   function changeCategoryHandler(value: Status) {
     setActiveCategory(value);
 
-    dispatch(changeCategory({activeCategory: value}))
+    dispatch(changeCategory({ activeCategory: value }));
   }
 
   return (
     <ul className="flex p-2">
       {fileCategories
         ? fileCategories.map((category) => (
-            <FileCategoryItem key={category.id} category={category} activeCategory={activeCategory} changeCategoryHandler={changeCategoryHandler} />
+            <FileCategoryItem
+              key={category.id}
+              category={category}
+              activeCategory={activeCategory}
+              changeCategoryHandler={changeCategoryHandler}
+            />
           ))
         : ""}
     </ul>

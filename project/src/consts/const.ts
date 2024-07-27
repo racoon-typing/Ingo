@@ -1,6 +1,6 @@
 import { AuthFormData } from "../pages/auth-page/AuthPage";
 import { LoginFormData } from "../pages/login-page/LoginPage";
-import { Department, FormField, FormFieldType, Status } from "../types/types";
+import { Department, FileDanger, FormField, FormFieldType, Status } from "../types/types";
 
 export const CURRENT_USER = 'current_user';
 
@@ -13,13 +13,13 @@ export const menuList = [
     },
     {
         id: 2,
-        name: "Конвертировать файлы",
-        value: "convert",
-        link: '/convert'
+        name: "Сохранить файлы",
+        value: "upload",
+        link: '/upload'
     },
     {
         id: 3,
-        name: "Сохраненные файлы",
+        name: "Загруженные файлы",
         value: "files",
         link: '/files'
     },
@@ -158,12 +158,12 @@ export const fileCategories = [
     {
         id: 1,
         name: 'Обработанные',
-        value: Status.ACTIVE,
+        value: Status.PROCESSED,
     },
     {
         id: 2,
         name: 'Не обработанные',
-        value: Status.UN_ACTIVE,
+        value: Status.UN_PROCESSED,
     },
     {
         id: 3,
@@ -181,7 +181,8 @@ export const userSaveFiles = [
         type: 'PDF',
         uploadTime: '10:30 17/07/2024',
         converted: true,
-        status: Status.ACTIVE,
+        status: Status.PROCESSED,
+        danger: FileDanger.DANGER,
         path: '/dsd/dsm.mp3',
     },
     {
@@ -192,7 +193,8 @@ export const userSaveFiles = [
         type: 'JPEG',
         uploadTime: '11:15 17/07/2024',
         converted: false,
-        status: Status.ACTIVE,
+        status: Status.PROCESSED,
+        danger: FileDanger.DANGER,
         path: '/dsd/dsm.mp3',
     },
     {
@@ -203,7 +205,8 @@ export const userSaveFiles = [
         type: 'MP4',
         uploadTime: '12:00 17/07/2024',
         converted: true,
-        status: Status.ACTIVE,
+        status: Status.PROCESSED,
+        danger: FileDanger.ANALIS,
         path: '/dsd/dsm.mp3',
     },
     {
@@ -215,6 +218,7 @@ export const userSaveFiles = [
         uploadTime: '12:45 17/07/2024',
         converted: true,
         status: Status.IN_ARCHIVE,
+        danger: FileDanger.ANALIS,
         path: '/dsd/dsm.mp3',
     },
     {
@@ -225,7 +229,8 @@ export const userSaveFiles = [
         type: 'MP3',
         uploadTime: '13:30 17/07/2024',
         converted: false,
-        status: Status.UN_ACTIVE,
+        status: Status.UN_PROCESSED,
+        danger: FileDanger.ANALIS,
         path: '/dsd/dsm.mp3',
     },
     {
@@ -236,7 +241,8 @@ export const userSaveFiles = [
         type: 'MP3',
         uploadTime: '13:30 17/07/2024',
         converted: false,
-        status: Status.UN_ACTIVE,
+        status: Status.UN_PROCESSED,
+        danger: FileDanger.ANALIS,
         path: '/dsd/dsm.mp3',
     },
     {
@@ -248,6 +254,7 @@ export const userSaveFiles = [
         uploadTime: '13:30 17/07/2024',
         converted: false,
         status: Status.IN_ARCHIVE,
+        danger: FileDanger.CHECKED,
         path: '/dsd/dsm.mp3',
     },
 ]

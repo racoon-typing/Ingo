@@ -3,14 +3,16 @@ import { ISaveFile, Status } from "../types/types";
 
 interface IFileState {
     files: ISaveFile[];
+    convertedFiles: ISaveFile[] | [];
     filteredFiles: ISaveFile[] | [];
     activeCategory: Status;
 }
 
 const initialState: IFileState = {
     files: [],
+    convertedFiles: [],
     filteredFiles: [],
-    activeCategory: Status.ACTIVE,
+    activeCategory: Status.PROCESSED,
 };
 
 const fileSlice = createSlice({
@@ -19,14 +21,29 @@ const fileSlice = createSlice({
     reducers: {
         setFiles: (state, action: PayloadAction<ISaveFile[]>) => {
             state.files = action.payload;
+            state.filteredFiles = action.payload;
+
+            state.convertedFiles = state.files.filter((file) => file.converted === true);
         },
         changeCategory: (state, action: PayloadAction<{ activeCategory: Status }>) => {
             state.activeCategory = action.payload.activeCategory;
 
-            // Выводим текущее состояние файлов
-            console.log(state.files);
+            switch (action.payload.activeCategory) {
+                case Status.PROCESSED:
+                    state.filteredFiles = state.files.filter((file) => {
+                        if (file.converted) {
+                            if (file.status == action.payload.activeCategory) {
+                                return file;
+                            }
+                        }
+                    });
 
-            state.filteredFiles = state.files.filter((file) => file.status == state.activeCategory);
+                    break;
+
+                default:
+                    break;
+            }
+            state.filteredFiles = state.files.filter((file) => file.status == action.payload.activeCategory);
         },
     }
 });

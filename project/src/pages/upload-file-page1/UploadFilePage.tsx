@@ -4,7 +4,7 @@ import UploadFilesTable from "../../components/upload-files-table/UploadFilesTab
 import Layout from "../../layout/Layout";
 // import "./Main.scss";
 
-function ConverterPage(): JSX.Element {
+function UploadFilePage(): JSX.Element {
   return (
     <Layout>
       <h2 className="text-2xl mb-6 font-medium">Загрузите ваши файлы</h2>
@@ -27,4 +27,4 @@ function ConverterPage(): JSX.Element {
   );
 }
 
-export default ConverterPage;
+export default UploadFilePage;

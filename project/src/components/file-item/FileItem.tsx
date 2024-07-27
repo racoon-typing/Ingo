@@ -1,22 +1,39 @@
 // import './FileItem.scss';
 
 import { Archive, ChevronRight, SquarePlus } from "lucide-react";
-import { ISaveFile } from "../../types/types";
+import { FileDanger, ISaveFile } from "../../types/types";
 
 interface IFileItem {
   file: ISaveFile;
 }
 
 function FileItem({ file }: IFileItem): JSX.Element {
-  const { name, description, size, type, path, uploadTime, converted, status } =
-    file;
+  const {
+    name,
+    description,
+    size,
+    type,
+    path,
+    uploadTime,
+    converted,
+    status,
+    danger,
+  } = file;
 
   return (
     <li className="flex flex-col border border-zinc-50 shadow rounded-md p-3">
       <button
         onClick={() => console.log("Клик")}
-        className="flex justify-end mb-2"
+        className="flex justify-between mb-2"
       >
+        {danger === FileDanger.DANGER ? (
+          <p className="text-red-500">Опасный</p>
+        ) : danger === FileDanger.ANALIS ? (
+          <p className="text-yellow-600">Анализ</p>
+        ) : (
+          <p className="text-green-500">Проверен</p>
+        )}
+
         {status === "archive" ? (
           <SquarePlus size={24} />
         ) : (
