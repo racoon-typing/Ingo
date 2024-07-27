@@ -38,7 +38,7 @@ const loginFormFieldsSchema = z.object({
   department: z.string().min(1, "Выберите подразделение"),
 });
 
-export type LoginFormData = z.infer<typeof loginFormFieldsSchema>;
+export type LoginFormData = z.infer<typeof loginFormFieldsSchema & {'userFiles': string[]}>;
 
 const formDefaultValues: LoginFormData = {
   firstName: "",
@@ -48,6 +48,7 @@ const formDefaultValues: LoginFormData = {
   password: "",
   userKey: "",
   department: "1",
+  // userFiles: [],
 };
 
 function LoginPage(): JSX.Element {
@@ -60,6 +61,7 @@ function LoginPage(): JSX.Element {
 
   const onSubmit = async (userData: LoginFormData) => {
     console.log("Submitted data:", userData);
+    // userData['userFiles'] = [];
 
     try {
       const user = await userService.createUser(userData);

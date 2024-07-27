@@ -1,19 +1,17 @@
 // import './FileCategory.scss';
 
-import { useState } from "react";
 import { fileCategories } from "../../consts/const";
 import FileCategoryItem from "../file-category-item/FileCategoryItem";
 import { useDispatch } from "react-redux";
 import { changeCategory } from "../../store/fileSlice";
 import { Status } from "../../types/types";
+import { useSelector } from "react-redux";
 
 function FileCategoryList(): JSX.Element {
   const dispatch = useDispatch();
-  const [activeCategory, setActiveCategory] = useState<Status>(Status.PROCESSED);
+  const activeCategory = useSelector((state) => state.data.activeCategory);
 
   function changeCategoryHandler(value: Status) {
-    setActiveCategory(value);
-
     dispatch(changeCategory({ activeCategory: value }));
   }
 

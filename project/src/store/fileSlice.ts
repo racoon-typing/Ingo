@@ -6,6 +6,7 @@ interface IFileState {
     // convertedFiles: ISaveFile[] | [];
     filteredFiles: ISaveFile[] | [];
     activeCategory: Status;
+    checkedFiles: string[] | [];
 }
 
 const initialState: IFileState = {
@@ -13,6 +14,7 @@ const initialState: IFileState = {
     // convertedFiles: [],
     filteredFiles: [],
     activeCategory: Status.PROCESSED,
+    checkedFiles: [],
 };
 
 const fileSlice = createSlice({

@@ -33,7 +33,7 @@ function Layout({ children }: ILayout): JSX.Element {
           </Link>
         </div>
 
-        <div className="w-full py-8 pr-5 max-h-screen overflow-x-auto">
+        <div className="relative w-full py-8 pr-5 max-h-screen overflow-x-auto">
           {children}
         </div>
       </div>

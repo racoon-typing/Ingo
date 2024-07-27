@@ -8,17 +8,8 @@ interface IFileItem {
 }
 
 function FileItem({ file }: IFileItem): JSX.Element {
-  const {
-    name,
-    description,
-    size,
-    type,
-    path,
-    uploadTime,
-    converted,
-    status,
-    danger,
-  } = file;
+  const { name, description, size, type, path, uploadTime, status, danger } =
+    file;
 
   return (
     <li className="flex flex-col border border-zinc-50 shadow rounded-md p-3">
@@ -26,9 +17,9 @@ function FileItem({ file }: IFileItem): JSX.Element {
         onClick={() => console.log("Клик")}
         className="flex justify-between mb-2"
       >
-       <div>
-        <input type="checkbox" />
-       </div>
+        <div>
+          <input type="checkbox" />
+        </div>
 
         {status === "archive" ? (
           <SquarePlus size={24} />
@@ -51,26 +42,22 @@ function FileItem({ file }: IFileItem): JSX.Element {
 
       <p className="mb-6 grow">{description}</p>
 
-      <audio controls className="mb-3">
+      <audio controls className="w-full mb-3">
         <source src={path} type={type} />
         Ваш браузер не поддерживает воспроизведение аудио.
       </audio>
 
-      <p className="text-base font-medium mb-3">
-        Показать текст {'=>'}
-      </p>
+      <div className="flex items-center mb-3">
+        <span className="mr-1">Показать текст</span>
+
+        <ChevronRight className="rotate-90" size={20} />
+      </div>
 
       <ul className="grid grid-cols-4 gap-2">
         <li className="border-r-2 border-zinc-100 px-1">{size}</li>
         <li className="border-r-2 border-zinc-100 px-1">{type}</li>
         <li className="col-start-3 col-end-5 px-1">{uploadTime}</li>
       </ul>
-
-      {/* <button className="flex items-center mt-auto bg-sky-900 text-white p-2 max-w-min rounded">
-        {converted ? "Просмотр" : "Конвертировать"}
-
-        <ChevronRight className="ml-2" size={16} />
-      </button> */}
     </li>
   );
 }

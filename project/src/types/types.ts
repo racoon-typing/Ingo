@@ -85,5 +85,16 @@ export interface LoginFormData {
     department: string;
 }
 
+export interface UserData {
+    id: string;
+    firstName: string;
+    lastName: string;
+    tel: string;
+    email: string;
+    userRights: string;
+    department: string;
+    userFiles: string[];
+}
+
 
 
