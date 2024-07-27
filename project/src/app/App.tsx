@@ -13,6 +13,7 @@ import { userSaveFiles } from "../consts/const";
 import { Status } from "../types/types";
 import UploadFilePage from "../pages/upload-file-page1/UploadFilePage";
 import FilesPage from "../pages/files-page/FilesPage";
+import FolderPage from "../pages/folder-page/FolderPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ function App() {
         <Route path="/account" element={<AccountPage />} />
         <Route path="/upload" element={<UploadFilePage />} />
         <Route path="/files" element={<FilesPage />} />
+        <Route path="/folder" element={<FolderPage />} />
       </Routes>
     </>
   );

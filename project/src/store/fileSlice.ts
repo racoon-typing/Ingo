@@ -3,14 +3,14 @@ import { ISaveFile, Status } from "../types/types";
 
 interface IFileState {
     files: ISaveFile[];
-    convertedFiles: ISaveFile[] | [];
+    // convertedFiles: ISaveFile[] | [];
     filteredFiles: ISaveFile[] | [];
     activeCategory: Status;
 }
 
 const initialState: IFileState = {
     files: [],
-    convertedFiles: [],
+    // convertedFiles: [],
     filteredFiles: [],
     activeCategory: Status.PROCESSED,
 };
@@ -23,16 +23,16 @@ const fileSlice = createSlice({
             state.files = action.payload;
             state.filteredFiles = action.payload;
 
-            state.convertedFiles = state.files.filter((file) => file.converted === true);
+            // state.convertedFiles = state.files.filter((file) => file.converted === true);
         },
-        changeCategory: (state, action: PayloadAction<{ activeCategory: Status }>) => {
+        _changeCategory: (state, action: PayloadAction<{ activeCategory: Status; }>) => {
             state.activeCategory = action.payload.activeCategory;
 
             switch (action.payload.activeCategory) {
                 case Status.PROCESSED:
                     state.filteredFiles = state.files.filter((file) => {
                         if (file.converted) {
-                            if (file.status == action.payload.activeCategory) {
+                            if (file.status == Status.PROCESSED) {
                                 return file;
                             }
                         }
@@ -40,20 +40,28 @@ const fileSlice = createSlice({
 
                     break;
                 case Status.UN_PROCESSED:
-                    state.filteredFiles = state.files.filter((file) => !file.converted);
+                    state.filteredFiles = state.files.filter((file) => {
+                        if (!file.converted) {
+                            if (file.status !== Status.IN_ARCHIVE) {
+                                return file;
+                            }
+                        }
+                    });
 
                     break;
                 case Status.IN_ARCHIVE:
-                    state.filteredFiles = state.files.filter((file) => {
-                        if (file.status == action.payload.activeCategory) {
-                            return file;
-                        }
-                    });
+                    state.filteredFiles = state.files.filter((file) => file.status == Status.IN_ARCHIVE);
 
                     break;
                 default:
                     break;
             }
+        },
+        get changeCategory() {
+            return this._changeCategory;
+        },
+        set changeCategory(value) {
+            this._changeCategory = value;
         },
     }
 });

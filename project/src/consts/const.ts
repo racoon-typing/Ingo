@@ -13,7 +13,7 @@ export const menuList = [
     },
     {
         id: 2,
-        name: "Сохранить файлы",
+        name: "Загрузить файлы",
         value: "upload",
         link: '/upload'
     },
@@ -22,6 +22,12 @@ export const menuList = [
         name: "Загруженные файлы",
         value: "files",
         link: '/files'
+    },
+    {
+        id: 3,
+        name: "Папки",
+        value: "folder",
+        link: '/folder'
     },
     // {
     //     id: 4,
