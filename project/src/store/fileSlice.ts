@@ -39,11 +39,21 @@ const fileSlice = createSlice({
                     });
 
                     break;
+                case Status.UN_PROCESSED:
+                    state.filteredFiles = state.files.filter((file) => !file.converted);
 
+                    break;
+                case Status.IN_ARCHIVE:
+                    state.filteredFiles = state.files.filter((file) => {
+                        if (file.status == action.payload.activeCategory) {
+                            return file;
+                        }
+                    });
+
+                    break;
                 default:
                     break;
             }
-            state.filteredFiles = state.files.filter((file) => file.status == action.payload.activeCategory);
         },
     }
 });
