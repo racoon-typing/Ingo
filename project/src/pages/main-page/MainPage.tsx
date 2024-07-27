@@ -1,6 +1,7 @@
 // import "./MainPage.scss";
 
 import { Link } from "react-router-dom";
+import Header from "../../components/header/Header";
 function MainPage(): JSX.Element {
   return (
     <div
@@ -8,6 +9,8 @@ function MainPage(): JSX.Element {
      from-blue-900 to-sky-950
      "
     >
+      <Header className="absolute top-8 left-0 w-full flex-grow" />
+
       <div className="text-white w-2/3">
         <h1 className="text-6xl font-bold text-center mb-5">
           ИНГО.Безопасность - Аудио

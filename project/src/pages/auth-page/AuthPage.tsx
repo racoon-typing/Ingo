@@ -1,13 +1,18 @@
 // import "./LoginPage.scss";
 
 import FormFiled from "../../components/ui/form-field/FormFiled";
-import { authFormFields, CURRENT_USER, CURRENT_USER_ID } from "../../consts/const";
+import {
+  authFormFields,
+  CURRENT_USER,
+  CURRENT_USER_ID,
+} from "../../consts/const";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { userService } from "../../service/userService";
 import { LoginFormData } from "../../types/types";
+import Header from "../../components/header/Header";
 
 // Определите вашу схему Zod
 const authFormFieldsSchema = z.object({
@@ -42,13 +47,19 @@ function AuthPage(): JSX.Element {
     console.log("Submitted data:", userData);
 
     try {
-      const user: LoginFormData & {id: string} = await userService.authUser(userData.email, userData.password);
-      localStorage.setItem(CURRENT_USER, JSON.stringify({id: user.id, email: user.email}));
-      console.log('User successfully auth:', user);
+      const user: LoginFormData & { id: string } = await userService.authUser(
+        userData.email,
+        userData.password
+      );
+      localStorage.setItem(
+        CURRENT_USER,
+        JSON.stringify({ id: user.id, email: user.email })
+      );
+      console.log("User successfully auth:", user);
 
       // Очищает форму
       reset({});
-      navigate('/account', {replace: true});
+      navigate("/account", { replace: true });
     } catch (error) {
       console.error("Error creating user:", error);
     }
@@ -59,6 +70,8 @@ function AuthPage(): JSX.Element {
       className="w-full min-h-screen flex flex-col items-center justify-center bg-gradient-to-br
     from-blue-900 to-sky-950"
     >
+      <Header className="absolute top-8 left-0 w-full flex-grow" />
+
       <div className="text-white w-1/2 max-w-xl">
         <h1 className="text-5xl font-bold text-center mb-6">Авторизация</h1>
 
@@ -86,11 +99,15 @@ function AuthPage(): JSX.Element {
           </div>
 
           <button
-            className="bg-blue-600 text-white rounded px-3 py-3"
+            className="bg-blue-600 text-white rounded px-3 py-3 mb-2"
             type="submit"
           >
             Войти
           </button>
+
+          <Link to={"/login"} className="text-center py-1">
+            Зарегистрироваться
+          </Link>
         </form>
       </div>
     </div>

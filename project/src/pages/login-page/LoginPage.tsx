@@ -7,7 +7,8 @@ import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { userService } from "../../service/userService";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Header from "../../components/header/Header";
 
 // Определите вашу схему Zod
 const loginFormFieldsSchema = z.object({
@@ -78,12 +79,14 @@ function LoginPage(): JSX.Element {
       className="w-full min-h-screen flex flex-col items-center justify-center bg-gradient-to-br
     from-blue-900 to-sky-950"
     >
+      <Header className="absolute top-8 left-0 w-full flex-grow" />
+
       <div className="text-white w-1/2 max-w-xl">
         <h1 className="text-5xl font-bold text-center mb-6">Регистрация</h1>
 
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="flex flex-col bg-white text-black rounded p-5 text-md"
+          className="flex flex-col bg-white text-black rounded p-5  text-md"
         >
           <div className="grid grid-cols-2 mb-8 gap-4">
             {loginFormFields.map((item) => (
@@ -105,11 +108,15 @@ function LoginPage(): JSX.Element {
           </div>
 
           <button
-            className="bg-blue-600 text-white rounded px-3 py-3"
+            className="bg-blue-600 text-white rounded px-3 py-3 mb-2"
             type="submit"
           >
             Зарегистрироваться
           </button>
+
+          <Link to={"/auth"} className="text-center py-1">
+            Войти
+          </Link>
         </form>
       </div>
     </div>
