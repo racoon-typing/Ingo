@@ -1,6 +1,6 @@
 // import './FileItem.scss';
 
-import { Archive, ChevronRight, SquarePlus } from "lucide-react";
+import { Archive, ChevronRight, ShieldAlert, ShieldCheck, ShieldQuestion, SquarePlus } from "lucide-react";
 import { FileDanger, ISaveFile } from "../../types/types";
 
 interface IFileItem {
@@ -28,15 +28,23 @@ function FileItem({ file }: IFileItem): JSX.Element {
         )}
       </button>
 
-      <h3 className="text-xl font-medium mb-2">
+      <h3 className="flex items-center text-xl font-medium mb-2">
+        <span >
         {name}
-        {"  "}
+        </span>
+        &nbsp;
         {danger === FileDanger.DANGER ? (
-          <span className="text-red-500">Опасный</span>
+          <span className="text-red-500">
+            <ShieldAlert size={18} />
+          </span>
         ) : danger === FileDanger.ANALIS ? (
-          <span className="text-yellow-600">Анализ</span>
+          <span className="text-yellow-600">
+            <ShieldQuestion size={18} />
+          </span>
         ) : (
-          <span className="text-green-500">Проверен</span>
+          <span className="text-green-500">
+            <ShieldCheck size={18} />
+          </span>
         )}
       </h3>
 

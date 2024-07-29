@@ -16,8 +16,7 @@ export interface IMenuItem {
 }
 
 export enum Status {
-    PROCESSED = 'processed',
-    UN_PROCESSED = 'un_processed',
+    ACTIVE = 'active',
     IN_ARCHIVE = 'archive',
 }
 
@@ -44,6 +43,7 @@ export interface ISaveFile {
     converted: boolean,
     status: Status,
     danger: FileDanger,
+    isChecked: boolean,
 }
 
 export enum RootStore {

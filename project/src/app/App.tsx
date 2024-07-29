@@ -9,17 +9,29 @@ import LogoutPage from "../pages/logout-page/LogoutPage";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { changeCategory, setFiles } from "../store/fileSlice";
-import { userSaveFiles } from "../consts/const";
 import { Status } from "../types/types";
 import UploadFilePage from "../pages/upload-file-page1/UploadFilePage";
 import FilesPage from "../pages/files-page/FilesPage";
 import FolderPage from "../pages/folder-page/FolderPage";
+import { fileService } from "../service/FileService";
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setFiles(userSaveFiles));
+    async function getUserFiles() {
+      try {
+        const userFiles = await fileService.getFiles();
+        console.log("Files get successful:", userFiles);
+  
+        dispatch(setFiles(userFiles));
+      } catch (error) {
+        console.error("Error creating user:", error);
+      }
+    }
+
+    getUserFiles();
+
     dispatch(changeCategory({ activeCategory: Status.PROCESSED }));
   }, [dispatch]);
 

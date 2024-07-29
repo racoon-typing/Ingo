@@ -31,20 +31,10 @@ const fileSlice = createSlice({
             state.activeCategory = action.payload.activeCategory;
 
             switch (action.payload.activeCategory) {
-                case Status.PROCESSED:
+                case Status.ACTIVE:
                     state.filteredFiles = state.files.filter((file) => {
                         if (file.converted) {
-                            if (file.status == Status.PROCESSED) {
-                                return file;
-                            }
-                        }
-                    });
-
-                    break;
-                case Status.UN_PROCESSED:
-                    state.filteredFiles = state.files.filter((file) => {
-                        if (!file.converted) {
-                            if (file.status !== Status.IN_ARCHIVE) {
+                            if (file.status == Status.ACTIVE) {
                                 return file;
                             }
                         }

@@ -42,7 +42,7 @@ function FilesPage(): JSX.Element {
             })}
           >
             <span className="text-base mr-3">В архиве</span>
-            <Archive size={24} />
+            <Archive size={20} />
           </div>
         </div>
       </div>
