@@ -20,7 +20,6 @@ function FileCategoryItem({
   changeCategoryHandler,
 }: IFileCategoryItemProp): JSX.Element {
   const isActive = determineActiveCategory(activeFilter, category.value);
-  console.log(isActive);
 
   return (
     <li

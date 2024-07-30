@@ -16,9 +16,9 @@ function FilesPage(): JSX.Element {
   const isArchived = activeCategory == Status.IN_ARCHIVE;
   const isOpenSettings = false;
 
-  // function changeCategoryHandler(value: Status) {
-  //   dispatch(changeCategory({ activeCategory: value }));
-  // }
+  function changeCategoryHandler(value: Status) {
+    dispatch(changeCategory({ status: value }));
+  }
 
   return (
     <Layout>

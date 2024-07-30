@@ -9,12 +9,14 @@ import { useSelector } from "react-redux";
 
 function FileCategoryList(): JSX.Element {
   const dispatch = useDispatch();
-  const activeFilter = useSelector((state) => state.data.activeFilter);
+  // const activeFilter = useSelector((state) => state.data.activeFilter);
+  const { filteredFiles, activeFilter } = useSelector((state: any) => state.data);
+  console.log(filteredFiles);
+  
 
   function changeCategoryHandler(value: IActiveFilter) {
     console.log(value);
-    
-    dispatch(changeCategory({ status: value.status, converted: value.converted }));
+    dispatch(changeCategory(value));
   }
 
   return (

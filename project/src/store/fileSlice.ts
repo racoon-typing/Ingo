@@ -25,27 +25,35 @@ const fileSlice = createSlice({
         setFiles: (state, action: PayloadAction<ISaveFile[]>) => {
             state.files = action.payload;
             state.filteredFiles = action.payload;
-
-            // state.convertedFiles = state.files.filter((file) => file.converted === true);
         },
-        _changeCategory: (state, action: PayloadAction<IActiveFilter>) => {
+        changeCategory: (state, action: PayloadAction<IActiveFilter>) => {
             state.activeFilter = action.payload;
+            console.log(action.payload);
+
             const { status, converted } = action.payload;
 
-            state.filteredFiles = state.files.filter((file) => {
-                if (status === Status.IN_ARCHIVE) {
-                    return file.status === Status.IN_ARCHIVE;
-                } else if (status === Status.ACTIVE) {
-                    return file.converted === converted && file.status === Status.ACTIVE;
-                }
-                return false;
-            });
-        },
-        get changeCategory() {
-            return this._changeCategory;
-        },
-        set changeCategory(value) {
-            this._changeCategory = value;
+            switch (status) {
+                case Status.IN_ARCHIVE:
+                    state.filteredFiles = state.files.filter((file) => file.status === Status.IN_ARCHIVE);
+                    break;
+                case Status.ACTIVE:
+                    if (converted) {
+                        console.log('true');
+                        state.filteredFiles = state.files.filter((file) => {
+                            return file.converted && file.status === Status.ACTIVE;
+                        });
+                    } else {
+                        console.log('false');
+                        state.filteredFiles = state.files.filter((file) => {
+                            console.log('true');
+                            return !file.converted && file.status === Status.ACTIVE;
+                        });
+                    }
+                    break;
+                default:
+                    state.filteredFiles = [];
+                    break;
+            }
         },
     }
 });
