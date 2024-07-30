@@ -71,7 +71,7 @@ export const userUploadFiles = [
     },
     {
         path: 'document-2.docx',
-        name: 'Документ 2',
+        name: 'Документ 22',
         description: 'Второй тестовый документ',
         size: '2.5 MB',
         type: 'DOCX',
@@ -164,12 +164,12 @@ export const fileCategories = [
     {
         id: 1,
         name: 'Обработанные',
-        value: Status.PROCESSED,
+        value: { status: Status.ACTIVE, converted: true },
     },
     {
         id: 2,
         name: 'Не обработанные',
-        value: Status.UN_PROCESSED,
+        value: { status: Status.ACTIVE, converted: false },
     },
 ]
 

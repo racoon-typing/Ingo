@@ -12,15 +12,13 @@ import classNames from "classnames";
 
 function FilesPage(): JSX.Element {
   const dispatch = useDispatch();
-  const activeCategory = useSelector((state) => state.data.activeCategory);
+  const activeCategory = useSelector((state) => state.data.activeFilter.status);
   const isArchived = activeCategory == Status.IN_ARCHIVE;
   const isOpenSettings = false;
 
-  function changeCategoryHandler(value: Status) {
-    console.log("dsds");
-
-    dispatch(changeCategory({ activeCategory: value }));
-  }
+  // function changeCategoryHandler(value: Status) {
+  //   dispatch(changeCategory({ activeCategory: value }));
+  // }
 
   return (
     <Layout>

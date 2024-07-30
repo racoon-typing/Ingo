@@ -1,24 +1,30 @@
 // import './FileCategoryItem.scss';
 
 import classNames from "classnames";
-import { IFileCategory, Status } from "../../types/types";
+import { IActiveFilter, IFileCategory } from "../../types/types";
 
 interface IFileCategoryItemProp {
   category: IFileCategory;
-  activeCategory: Status;
-  changeCategoryHandler: (id: Status) => void;
+  activeFilter: IActiveFilter;
+  changeCategoryHandler: (value: IActiveFilter) => void;
 }
+
+// В компоненте:
+const determineActiveCategory = (activeFilter: IActiveFilter, categoryValue: IActiveFilter) => {
+  return activeFilter.status === categoryValue.status && activeFilter.converted === categoryValue.converted;
+};
 
 function FileCategoryItem({
   category,
-  activeCategory,
+  activeFilter,
   changeCategoryHandler,
 }: IFileCategoryItemProp): JSX.Element {
-  const isActive = activeCategory === category.value;
+  const isActive = determineActiveCategory(activeFilter, category.value);
+  console.log(isActive);
 
   return (
     <li
-      onClick={() => changeCategoryHandler(category.value)}
+    onClick={() => changeCategoryHandler(category.value)}
       key={category.id}
       className={classNames("p-2 px-3 rounded-md", {
         "bg-white shadow": isActive,

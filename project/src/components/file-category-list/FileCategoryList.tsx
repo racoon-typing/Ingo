@@ -4,15 +4,17 @@ import { fileCategories } from "../../consts/const";
 import FileCategoryItem from "../file-category-item/FileCategoryItem";
 import { useDispatch } from "react-redux";
 import { changeCategory } from "../../store/fileSlice";
-import { Status } from "../../types/types";
+import { IActiveFilter } from "../../types/types";
 import { useSelector } from "react-redux";
 
 function FileCategoryList(): JSX.Element {
   const dispatch = useDispatch();
-  const activeCategory = useSelector((state) => state.data.activeCategory);
+  const activeFilter = useSelector((state) => state.data.activeFilter);
 
-  function changeCategoryHandler(value: Status) {
-    dispatch(changeCategory({ activeCategory: value }));
+  function changeCategoryHandler(value: IActiveFilter) {
+    console.log(value);
+    
+    dispatch(changeCategory({ status: value.status, converted: value.converted }));
   }
 
   return (
@@ -22,7 +24,7 @@ function FileCategoryList(): JSX.Element {
             <FileCategoryItem
               key={category.id}
               category={category}
-              activeCategory={activeCategory}
+              activeFilter={activeFilter}
               changeCategoryHandler={changeCategoryHandler}
             />
           ))

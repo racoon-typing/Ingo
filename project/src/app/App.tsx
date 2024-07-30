@@ -13,7 +13,7 @@ import { Status } from "../types/types";
 import UploadFilePage from "../pages/upload-file-page1/UploadFilePage";
 import FilesPage from "../pages/files-page/FilesPage";
 import FolderPage from "../pages/folder-page/FolderPage";
-import { fileService } from "../service/FileService";
+import { fileService } from "../service/fileService";
 
 function App() {
   const dispatch = useDispatch();
@@ -22,8 +22,8 @@ function App() {
     async function getUserFiles() {
       try {
         const userFiles = await fileService.getFiles();
-        console.log("Files get successful:", userFiles);
-  
+        // console.log("Files get successful:", userFiles);
+
         dispatch(setFiles(userFiles));
       } catch (error) {
         console.error("Error creating user:", error);
@@ -32,7 +32,7 @@ function App() {
 
     getUserFiles();
 
-    dispatch(changeCategory({ activeCategory: Status.PROCESSED }));
+    dispatch(changeCategory({ status: Status.ACTIVE, converted: true }));
   }, [dispatch]);
 
   return (

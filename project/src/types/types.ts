@@ -15,6 +15,11 @@ export interface IMenuItem {
     link: string;
 }
 
+export interface IActiveFilter {
+    status: Status,
+    converted?: boolean,
+}
+
 export enum Status {
     ACTIVE = 'active',
     IN_ARCHIVE = 'archive',
@@ -29,7 +34,7 @@ export enum FileDanger {
 export interface IFileCategory {
     id: number;
     name: string;
-    value: Status;
+    value: IActiveFilter;
 }
 
 export interface ISaveFile {

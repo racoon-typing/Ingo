@@ -1,19 +1,20 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ISaveFile, Status } from "../types/types";
+import { IActiveFilter, ISaveFile, Status } from "../types/types";
 
 interface IFileState {
     files: ISaveFile[];
-    // convertedFiles: ISaveFile[] | [];
     filteredFiles: ISaveFile[] | [];
-    activeCategory: Status;
+    activeFilter: IActiveFilter;
     checkedFiles: string[] | [];
 }
 
 const initialState: IFileState = {
     files: [],
-    // convertedFiles: [],
     filteredFiles: [],
-    activeCategory: Status.PROCESSED,
+    activeFilter: {
+        status: Status.IN_ARCHIVE,
+        converted: true,
+    },
     checkedFiles: [],
 };
 
@@ -27,27 +28,18 @@ const fileSlice = createSlice({
 
             // state.convertedFiles = state.files.filter((file) => file.converted === true);
         },
-        _changeCategory: (state, action: PayloadAction<{ activeCategory: Status; }>) => {
-            state.activeCategory = action.payload.activeCategory;
+        _changeCategory: (state, action: PayloadAction<IActiveFilter>) => {
+            state.activeFilter = action.payload;
+            const { status, converted } = action.payload;
 
-            switch (action.payload.activeCategory) {
-                case Status.ACTIVE:
-                    state.filteredFiles = state.files.filter((file) => {
-                        if (file.converted) {
-                            if (file.status == Status.ACTIVE) {
-                                return file;
-                            }
-                        }
-                    });
-
-                    break;
-                case Status.IN_ARCHIVE:
-                    state.filteredFiles = state.files.filter((file) => file.status == Status.IN_ARCHIVE);
-
-                    break;
-                default:
-                    break;
-            }
+            state.filteredFiles = state.files.filter((file) => {
+                if (status === Status.IN_ARCHIVE) {
+                    return file.status === Status.IN_ARCHIVE;
+                } else if (status === Status.ACTIVE) {
+                    return file.converted === converted && file.status === Status.ACTIVE;
+                }
+                return false;
+            });
         },
         get changeCategory() {
             return this._changeCategory;
